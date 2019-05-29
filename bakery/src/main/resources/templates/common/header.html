@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="common-header">
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>MYHA'S BAKERY SHOP</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/non-responsive.css" rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+<link href="/css/style.css" rel="stylesheet">
+<script type="text/javascript" src="/js/myscript.js"></script>
+
+</head>
+
+<body>
+	<div th:fragment="navbar">
+		<!-- navbar -->
+		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<a class="navbar-brand" style="margin-left: 20px;font-family: 'Lobster', cursive;" th:href="@{/}">MYHA's BAKERY</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarsExample03" aria-controls="navbarsExample03"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarsExample03">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/product}">Product</a></li>
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="https://example.com"
+						id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">Category</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown03">
+							<a class="dropdown-item" href="#">Cakes</a> <a
+								class="dropdown-item" href="#">Breads &amp; Pastries</a> <a
+								class="dropdown-item" href="#">Light Meals</a> <a
+								class="dropdown-item" href="#">Beverages</a> <a
+								class="dropdown-item" href="#">Sweet Desserts</a>
+						</div></li>
+
+					<li class="text-truncate" style="margin-left: 20px">
+
+						<form class="form-inline">
+							<input class="form-control mr-sm-1" type="text" name="keyword"
+								placeholder="Search">
+							<button type="submit" class="btn btn-primary">Search</button>
+						</form>
+					</li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a th:href="@{/shoppingCart/cart}" class="nav-link">SHOPPING CART</a></li>
+					
+					<li><a sec:authorize="!isFullyAuthenticated()" th:href="@{/SignIn}"
+						class="nav-link">Sign In</a></li>
+					<li><a sec:authorize="isFullyAuthenticated()"
+						th:href="@{/Account}" class="nav-link">My Account</a></li>
+					<li><a sec:authorize="isFullyAuthenticated()" th:href="@{/logout}"
+						class="nav-link">Log Out</a></li>
+				</ul>
+
+			</div>
+		</nav>
+	</div>
+	<div th:fragment="body-bottom-scripts">
+
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"></script>
+		<script>
+			window.jQuery
+					|| document
+							.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+		</script>
+		<script src="/js/popper.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+		<script src="/js/holder.min.js"></script>
+	<script th:src="@{/js/myscript.js}"></script>
+
+	</div>
+</body>
+</html>

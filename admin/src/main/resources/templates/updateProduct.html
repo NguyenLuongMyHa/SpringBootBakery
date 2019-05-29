@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<meta charset="utf-8" />
+
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		<form th:action="@{/product/updateProduct}" method="post"
+			enctype="multipart/form-data">
+
+			<h2 class="text-center">Update Product Information</h2>
+			
+			<input hidden="hidden" name="id" th:value="${product.id}" />
+
+			<!-- product name -->
+			<div class="form-group">
+				<label for="name"><strong>* Name</strong></label> <input type="text"
+					name="name" class="form-control" id="name"
+					th:value="${product.name}" required="required" placeholder="Name" />
+				<small id="nameHelp" class="form-text text-muted">Name of
+					the product</small>
+
+			</div>
+
+
+			<!-- category -->
+			<div class="form-group">
+				<label class="col-xs-2 control-label" for="category"><strong>*
+						Category</strong></label>
+				<div class="col-xs-8">
+					<select th:value="${product.category}" id="category"
+						name="category" class="form-control">
+						<option value="" selected="selected" disabled="disabled">Please
+							select an category...</option>
+						<option value="Cakes" th:selected="(${product.category}=='Cakes')">Cakes</option>
+						<option value="Breads &amp; Pastries"
+							th:selected="(${product.category}=='Breads &amp; Pastries')">Breads
+							&amp; Pastries</option>
+						<option value="Light Meals"
+							th:selected="(${product.category}=='Light Meals')">Light
+							Meals</option>
+						<option value="Beverages"
+							th:selected="(${product.category}=='Beverages')">Beverages</option>
+						<option value="Sweet Desserts"
+							th:selected="(${product.category}=='Sweet Desserts')">Sweet
+							Desserts</option>
+					</select>
+				</div>
+			</div>
+
+
+			<!-- list price -->
+			<div class="form-group">
+				<label class="col-xs-2 control-label" for="listPrice"><strong>List
+						Price</strong></label>
+				<div class="col-xs-8">
+					<div class="input-group">
+						<p>đ</p>
+						<input th:value="${product.listPrice}" type="number" step="0.01"
+							name="listPrice" class="form-control" id="listPrice"
+							placeholder="List Price" />
+					</div>
+					<small id="nameHelp" class="form-text text-muted">List
+						price of the product</small>
+
+				</div>
+			</div>
+
+			<!-- our price -->
+			<div class="form-group">
+				<label class="col-xs-2 control-label" for="ourPrice"><strong>Our
+						Price</strong></label>
+				<div class="col-xs-8">
+					<div class="input-group">
+						<p>đ</p>
+						<input th:value="${product.ourPrice}" type="number" step="0.01"
+							name="ourPrice" class="form-control" id="ourPrice"
+							placeholder="Our Price" />
+					</div>
+					<small id="nameHelp" class="form-text text-muted">Our price
+						of the product</small>
+
+
+				</div>
+			</div>
+
+			<!-- in stock number -->
+			<div class="form-group">
+				<label class="col-xs-2 control-label" for="inStockNumber"><strong>Number
+						in stock</strong></label>
+				<div class="col-xs-8">
+					<input th:value="${product.inStockNumber}" type="number"
+						name="inStockNumber" class="form-control" id="inStockNumber"
+						placeholder="Number of in-stock copies" /> <small id="nameHelp"
+						class="form-text text-muted">Number of product in-stock</small>
+
+
+				</div>
+			</div>
+
+			<!-- status of product -->
+			<div class="form-group">
+				<label class="col-xs-2 control-label" for="status"><strong>Status</strong></label>
+				<div>
+					<label><input value="true" type="radio" name="active"
+						class="form-control" style="margin-right: 50px" />Active</label> <label><input
+						value="false" type="radio" name="active" class="form-control" />Inactive</label>
+					<small id="nameHelp" class="form-text text-muted">The
+						product is active or inactive</small>
+				</div>
+			</div>
+
+			<!-- description -->
+			<div class="form-group">
+				<label for="description"><strong>Description</strong></label>
+				<textarea class="form-control" rows="5" id="description"
+					name="description" th:value="${product.description}" th:text="${product.description}"
+					placeholder="Description"></textarea>
+				<small id="nameHelp" class="form-text text-muted">Description
+					of the product</small>
+			</div>
+
+			<!-- upload image -->
+			<div class="form-group">
+				<div>
+					<label for="productImage"><strong>Upload product
+							image</strong></label>
+				</div>
+				<div>
+					<input id="productImage" type="file" name="productImage"
+						th:value="${product.productImage}" />
+				</div>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-success">Update Product</button>
+				<a class="btn btn-danger" th:href="@{/product/productInfo(id=${product.id})}">Cancel</a>
+			</div>
+		</form>
+	</div>
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

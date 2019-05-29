@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:fragment="common-header">
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<title>MYHA'S BAKERY SHOP</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/js/myscript.js}"></script>
+
+
+</head>
+
+
+<body>
+	<div th:fragment="navbar">
+		<!-- navbar -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<button class="navbar-toggler" aria-expanded="false"
+				aria-controls="navbarsExample08" aria-label="Toggle navigation"
+				type="button" data-toggle="collapse" data-target="#navbarsExample08">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" th:href="@{/}">Admin Portal</a>
+			<div class="collapse navbar-collapse justify-content-md-center"
+				id="navbarsExample08">
+				<ul class="navbar-nav">
+
+					<li class="nav-item"><a class="nav-link" th:href="@{/product/add}">Add new
+								product</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/product/productlist}">List products</a></li>
+					
+				</ul>
+				<ul class="navbar-nav navbar-right">
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/logout}">Sign out</a></li>
+				</ul>
+			</div>
+
+		</nav>
+	</div>
+	<div th:fragment="body-bottom-scripts">
+
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"></script>
+		<script>
+			window.jQuery
+					|| document
+							.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+		</script>
+		<script src="/js/popper.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+		<script src="/js/holder.min.js"></script>
+				<script th:src="@{/js/jquery.min.js}"></script>
+				<script th:src="@{/js/myscript.js}"></script>
+		<script th:src="@{/js/bootbox.min.js}"></script>
+
+	</div>
+</body>
+</html>

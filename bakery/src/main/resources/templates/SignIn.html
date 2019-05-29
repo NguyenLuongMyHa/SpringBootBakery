@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+<meta charset="utf-8" />
+
+<body>
+	<div th:replace="common/header :: navbar"/>
+    
+    <div class="container" th:classappend="${classActiveLogin}? 'active'" style="margin: 6rem 8rem 8rem 8rem">
+    
+        <h1 class="mb-1 text-center">Sign in</h1>
+        <div class="alert alert-info" th:if="${emailSent}">An email has been sent to the email address you just registered. Please validate your email address and update your password information.
+        </div>
+        <div th:if="${forgetPasswordEmailSent}" class="alert alert-success">An email has been sent to the email address you just registered. Please validate your email address and update your password information.</div>
+    	
+    	<div th:if="${param.error != null}" class="alert alert-danger">Sai tên hoặc mật khẩu.</div>
+        <form th:action="@{/SignIn}" method="post">
+
+        <div class="form-group">
+            <label for="username">* Username: </label> 
+            <input required="required" type="text" class="form-control" id="username" name="username" />
+		</div>
+        <div class="form-group">
+            <label for="password">* Password: </label> 
+            <div th:classappend="${classActiveForgetPassword}? 'active'">
+            	<a class="form-sublink" href="/Recovery">Forgot password?</a>
+			</div>
+            <input required="required" type="password" class="form-control" id="password" name="password" />
+		</div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block mb-4" >Sign in</button>
+    	</div>
+    	<p class="small text-center text-gray-soft" th:classappend="${classActiveNewAccount}? 'active'">Don't have an account yet? <a href="/SignUp">Sign up</a></p>
+
+    	</form>
+	</div>
+
+	<div th:replace="common/header :: body-bottom-scripts"/>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container">
+		<div>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/product/productlist}">&#60;&#60; Go back</a></li>
+				
+				<li class="breadcrumb-item"><a th:href="@{/product/updateProduct?id=}+${product.id}">Edit</a></li>
+			</ol>
+
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img th:src="@{/images/product/}+${product.id}+'.jpg'"
+							class="img-thumbnail center-block" style="height: 300px; width: 300px;" />
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<h3 th:text="${product.name}"></h3>
+				<div class="row">
+					<div class="col-sm-6">
+						
+						<p>
+							<strong>Category: </strong><span th:text="${product.category}"></span>
+						</p>
+						
+					</div>
+					<div class="col-sm-6">
+						
+						<p>
+							<strong>List Price: </strong><span th:text="${product.listPrice}"></span>
+						</p>
+						<p>
+							<strong>Our Price: </strong><span th:text="${product.ourPrice}"></span>
+						</p>
+						<p>
+							<strong>Number in Stock: </strong><span
+								th:text="${product.inStockNumber}"></span>
+						</p>
+					</div>
+				</div>
+
+				<p>
+					<Strong>Description: </Strong><span th:text="${product.description}"></span>
+				</p>
+			</div>
+
+		</div>
+
+
+
+
+
+	</div>
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

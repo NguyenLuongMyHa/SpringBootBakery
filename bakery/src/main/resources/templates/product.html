@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<meta charset="utf-8" />
+
+<head th:replace="common/header :: common-header" />
+
+<body>
+	<div th:replace="common/header :: navbar" />
+
+	<div class="container" style="margin-top: 20px">
+
+		<div class="row" style="margin-top: 20px">
+			<h2 class="section-headline">
+				<span
+					th:text="${user}? ${#strings.toUpperCase(user.username)} : 'All Products'"></span>
+			</h2>
+		</div>
+
+		<div class="row" style="margin-top: 20px; width: 100%;">
+			<div th:if="${emptyList}">
+				<h5 style="font-style: italic;">Oops, no product is found. Try
+					again later.</h5>
+			</div>
+
+			<table border="0" id="productlist">
+				<thead>
+					<tr>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="book-item" data-th-each="product : ${productlist}">
+						<td>
+							<div th:if="${product!= null}">
+
+								<div class="row" style="margin-top:10px">
+									<div class="col-sm-4">
+										<a th:href="@{/ProductDetail?id=}+${product.id}"><img
+											class="img-thumbnail" style="height: 300px; width: 300px;"
+											th:src="#{adminPath}+@{/images/product/}+${product.id}+'.jpg'" /></a>
+									</div>
+									<div class="col-sm-8">
+										<a th:href="@{/ProductDetail?id=}+${product.id}">
+										<h4 th:text="${product.name}"></h4></a> 
+										
+										<span style="font-size: x-large; color: #db3208;">đ<span
+												th:text="${#numbers.formatDecimal(product.ourPrice, 0 , 'COMMA', 2, 'POINT')}"></span></span>
+
+										<span
+											style="text-decoration: line-through;">đ<span
+												th:text="${#numbers.formatDecimal(product.listPrice, 0 , 'COMMA', 2, 'POINT')}"></span></span>
+
+										<p th:text="${#strings.abbreviate(product.description, 500)}"></p>
+									</div>
+								</div>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+
+
+		</div>
+	</div>
+
+
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>

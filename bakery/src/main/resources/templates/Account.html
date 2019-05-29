@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head th:replace="common/header :: common-header">
+<meta charset="utf-8" />
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<div th:replace="common/header :: navbar" />
+	
+	<div class="container" style="margin-top: 20px">
+		<h4 style="text-align: center;">Welcome</h4>
+	
+		<div class="row" style="margin-top: 20px">
+			<h2 class="section-headline">
+				<span th:text="${#strings.toUpperCase(user.username)}"></span>
+			</h2>
+
+		</div>
+
+		<div class="row" style="margin-top: 20px; width: 100%;">
+			<nav>
+				<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+					<ul class="nav nav-tabs" role="tablist">
+
+						<li th:classappend="${classActiveEdit}? 'active'"
+							role="presentation"><a
+							class=" nav-item nav-link
+							active" id="nav-home-tab"
+							data-toggle="tab" href="#nav-home" role="tab"
+							aria-controls="nav-home" aria-selected="true">Edit Profile</a>
+						<li th:classappend="${classActiveOrders}? 'active'"
+							role="presentation"><a class="nav-item nav-link"
+							id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+							role="tab" aria-controls="nav-profile" aria-selected="false">Orders</a>
+						
+					</ul>
+
+				</div>
+			</nav>
+
+			<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+				<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+					aria-labelledby="nav-home-tab"
+					th:classappend="${classActiveEdit}? 'in active'">
+
+					<div class="panel-group">
+						<div class="panel panel-default" style="border: none;">
+							<div class="panel-body" style="margin: 20px 20px 20px 20px;">
+								<form th:action="@{/updateUserInfo}" method="post">
+									<input type="hidden" name="id" th:value="${user.id}" />
+
+									<div class="bg-info" th:if="${updateUserInfo}">User info
+										updated.</div>
+
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6">
+												<label for="firstName">First Name</label> <input type="text"
+													class="form-control" id="firstName" name="firstName"
+													th:value="${user.firstName}" />
+											</div>
+											<div class="col-sm-6">
+												<label for="lastName">Last Name</label> <input type="text"
+													class="form-control" id="lastName" name="lastName"
+													th:value="${user.lastName}" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="userName">Username</label><input type="text"
+											class="form-control" id="userName" name="username"
+											th:value="${user.username}" />
+									</div>
+									<div class="form-group">
+										<label for="currentPassword">Current Password</label><input
+											type="text" class="form-control" id="currentPassword"
+											name="password" th:value="${currentPassword}" />
+									</div>
+									
+									<div class="form-group">
+										<label for="email">* Email Address</label><input type="text"
+											class="form-control" id="email" name="email"
+											th:value="${user.email}" />
+									</div>
+									
+									<div class="form-group">
+										<label for="txtNewPassword">Password</label>&nbsp;<span id="checkPasswordMatch" style="color:red;"></span> 
+										<input
+											type="password" class="form-control" id="txtNewPassword"
+											name="newPassword" />
+									</div>
+
+									<div class="form-group">
+										<label for="txtConfirmPassword">Confirm Password</label><input
+											type="password" class="form-control" id="txtConfirmPassword" />
+									</div>
+									
+									<div class="col-12 text-center">
+										<button id="updateUserInfoButton" type="submit" class="btn btn-primary" style="width:220px;height:60px;">Create new account</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div class="tab-pane fade" id="nav-profile" role="tabpanel"
+					aria-labelledby="nav-profile-tab">day la tab 2</div>
+				<div class="tab-pane fade" id="nav-contact" role="tabpanel"
+					aria-labelledby="nav-contact-tab">day la tab 3</div>
+				<div class="tab-pane fade" id="nav-about" role="tabpanel"
+					aria-labelledby="nav-about-tab">day la tab 4</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div th:replace="common/header :: body-bottom-scripts" />
+</body>
+</html>
